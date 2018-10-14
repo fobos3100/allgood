@@ -5,55 +5,44 @@ using UnityEngine;
 public class HERO_script : MonoBehaviour
 {
 
-    private Rigidbody2D playerRB;
-    private SpriteRenderer playerSR;
+    private Rigidbody2D rb;
+    private SpriteRenderer sr;
     //MOVE
     public float playerSpeed = 10f;
-    public bool CanMove;
+    public bool canMove;
     //JUMP
-    public Vector2 JumpForce = new Vector2(0, 10f);
+    private Vector2 jumpForce = new Vector2(0, 10f);
     public bool isGrounded;
+    public bool canDoubleJump;
     //DASH
-    public float DashSpeed;
-    public float StartDashTime;
-    private int Direction;
-    private float DashTime;
+    private float dashSpeed=30f;
+    private float startDashTime=0.1f;
+    private int direction;
+    private float dashTime;
 
-
-    // Use this for initialization
     void Start()
     {
-        CanMove = true;
+        canMove = true;
         isGrounded = true;
-        playerRB = GetComponent<Rigidbody2D>();
-        playerSR = GetComponent<SpriteRenderer>();
-        DashTime = StartDashTime;
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        dashTime = startDashTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //float moveHorizontal = Input.GetAxis("Horizontal");
 
         //float moveVertical = Input.GetAxis("Vertical");
 
-        move();
-        jump();
-        dash();
+        Move();
+        Jump();
+        Dash();
     }
 
     private void FixedUpdate()
     {
 
-    }
-
-    void jump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            GetComponent<Rigidbody2D>().AddForce(JumpForce, ForceMode2D.Impulse);
-            isGrounded = false;
-        }
     }
 
     void OnCollisionEnter2D(Collision2D playerCL)
@@ -64,60 +53,80 @@ public class HERO_script : MonoBehaviour
         }
     }
 
-    void move()
+    private void Jump()
     {
-        if (CanMove == true)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isGrounded)
+            {
+                rb.velocity = Vector2.zero;
+                GetComponent<Rigidbody2D>().AddForce(jumpForce, ForceMode2D.Impulse);
+                canDoubleJump = true;
+                isGrounded = false;
+            } else {
+                if (canDoubleJump) {
+                    canDoubleJump = false;
+                    rb.velocity = Vector2.zero;
+                    GetComponent<Rigidbody2D>().AddForce(jumpForce, ForceMode2D.Impulse);
+                }
+            }
+        }
+    }
+
+    void Move()
+    {
+        if (canMove == true)
         {
             if (Input.GetKey(KeyCode.A))
             {
                 transform.Translate(Vector2.left * playerSpeed * Time.deltaTime, Space.World);
-                playerSR.flipX = true;
+                sr.flipX = true;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
                 transform.Translate(Vector2.right * playerSpeed * Time.deltaTime, Space.World);
-                playerSR.flipX = false;
+                sr.flipX = false;
             }
         }
     }
 
-    void dash()
+    void Dash()
     {
 
         {
 
-            if (Direction == 0)
+            if (direction == 0)
             {
                 if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift))
                 {
-                    Direction = 1;
+                    direction = 1;
                 }
                 else if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift))
                 {
-                    Direction = 2;
+                    direction = 2;
                 }
             }
             else
             {
-                if (DashTime <= 0)
+                if (dashTime <= 0)
                 {
-                    CanMove = true;
-                    Direction = 0;
-                    DashTime = StartDashTime;
-                    playerRB.velocity = Vector2.zero;
+                    canMove = true;
+                    direction = 0;
+                    dashTime = startDashTime;
+                    rb.velocity = Vector2.zero;
                 }
                 else
                 {
-                    DashTime -= Time.deltaTime;
-                    CanMove = false;
-                    if (Direction == 1)
+                    dashTime -= Time.deltaTime;
+                    canMove = false;
+                    if (direction == 1)
                     {
-                        playerRB.velocity = Vector2.left * DashSpeed;
+                        rb.velocity = Vector2.left * dashSpeed;
                     }
-                    else if (Direction == 2)
+                    else if (direction == 2)
                     {
-                        playerRB.velocity = Vector2.right * DashSpeed;
+                        rb.velocity = Vector2.right * dashSpeed;
                     }
                 }
             }
