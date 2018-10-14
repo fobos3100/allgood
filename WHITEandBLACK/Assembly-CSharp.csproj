@@ -61,7 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\THINGS\HERO_script.cs" />
+    <Compile Include="Assets\THINGS\Scripts\BlackBox_Dash.cs" />
+    <Compile Include="Assets\THINGS\Scripts\HERO_script.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/SOS/allgood/WHITEandBLACK/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
