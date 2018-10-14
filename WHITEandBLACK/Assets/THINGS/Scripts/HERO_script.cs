@@ -121,6 +121,17 @@ public class HERO_script : MonoBehaviour
                     }
                 }
             }
+
+            /*if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                DashTime -= Time.deltaTime;
+                playerRB.velocity = Vector2.left * DashSpeed;
+            }
+            if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                DashTime -= Time.deltaTime;
+                playerRB.velocity = Vector2.right * DashSpeed;
+            }*/
         }
     }
 }
