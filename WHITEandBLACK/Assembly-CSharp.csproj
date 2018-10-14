@@ -63,16 +63,16 @@
   <ItemGroup>
     <Compile Include="Assets\THINGS\HERO_script.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/SOS/Project Git Repository/WHITEandBLACK/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/SOS/allgood/WHITEandBLACK/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/SOS/Project Git Repository/WHITEandBLACK/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/SOS/allgood/WHITEandBLACK/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/SOS/Project Git Repository/WHITEandBLACK/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/SOS/allgood/WHITEandBLACK/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/SOS/Project Git Repository/WHITEandBLACK/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/SOS/allgood/WHITEandBLACK/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/SOS/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
