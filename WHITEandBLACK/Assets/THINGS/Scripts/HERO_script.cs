@@ -7,6 +7,7 @@ public class HERO_script : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+
     //MOVE
     public float playerSpeed = 10f;
     public bool canMove;
@@ -19,6 +20,9 @@ public class HERO_script : MonoBehaviour
     private float startDashTime=0.1f;
     private int direction;
     private float dashTime;
+    //COOLDOWN
+    private float dashCoolDown=1f;
+    private float nextDashTime = 0f;
 
     void Start()
     {
@@ -29,7 +33,7 @@ public class HERO_script : MonoBehaviour
         dashTime = startDashTime;
     }
 
-    void Update()
+    private void Update()
     {
         //float moveHorizontal = Input.GetAxis("Horizontal");
 
@@ -45,12 +49,26 @@ public class HERO_script : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D playerCL)
+    void OnCollisionEnter2D(Collision2D cl)
     {
-        if (playerCL.gameObject.tag == "ground" && isGrounded == false)
+        if (cl.gameObject.tag == "ground" && isGrounded == false)
         {
             isGrounded = true;
         }
+    }
+
+    void OnCollisionStay2D(Collision2D cl)
+    {
+        if (cl.gameObject.tag == "ground" && isGrounded == false)
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D cl)
+    {
+        isGrounded = false;
+        canDoubleJump = true;
     }
 
     private void Jump()
@@ -61,7 +79,6 @@ public class HERO_script : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 GetComponent<Rigidbody2D>().AddForce(jumpForce, ForceMode2D.Impulse);
-                canDoubleJump = true;
                 isGrounded = false;
             } else {
                 if (canDoubleJump) {
@@ -93,41 +110,42 @@ public class HERO_script : MonoBehaviour
 
     void Dash()
     {
-
-        {
-
-            if (direction == 0)
-            {
+                if (direction == 0)
+                {
+                    if (Time.time > nextDashTime) {
                 if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     direction = 1;
+                    nextDashTime = Time.time + dashCoolDown;
                 }
                 else if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     direction = 2;
-                }
-            }
-            else
-            {
-                if (dashTime <= 0)
-                {
-                    canMove = true;
-                    direction = 0;
-                    dashTime = startDashTime;
-                    rb.velocity = Vector2.zero;
+                    nextDashTime = Time.time + dashCoolDown;
+                }                
+                    }  
                 }
                 else
                 {
-                    dashTime -= Time.deltaTime;
-                    canMove = false;
-                    if (direction == 1)
+                    if (dashTime <= 0)
                     {
-                        rb.velocity = Vector2.left * dashSpeed;
+                        canMove = true;
+                        direction = 0;
+                        dashTime = startDashTime;
+                        rb.velocity = Vector2.zero;
                     }
-                    else if (direction == 2)
+                    else
                     {
-                        rb.velocity = Vector2.right * dashSpeed;
-                    }
+                        dashTime -= Time.deltaTime;
+                        canMove = false;
+                        if (direction == 1)
+                        {
+                            rb.velocity = Vector2.left * dashSpeed;
+                        }
+                        else if (direction == 2)
+                {
+                            rb.velocity = Vector2.right * dashSpeed;
+
                 }
             }
         }

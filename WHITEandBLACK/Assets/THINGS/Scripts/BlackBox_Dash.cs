@@ -10,6 +10,7 @@ public class BlackBox_Dash : MonoBehaviour
     private float dashTime;
     public float startDashTime;
     private int direction;
+    private float timeStamp;
 
     // Use this for initialization
     void Start()
