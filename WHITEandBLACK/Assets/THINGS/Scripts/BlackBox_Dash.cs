@@ -22,7 +22,11 @@ public class BlackBox_Dash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dash();       
+    }
 
+    void dash()
+    {
         if (direction == 0)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -41,7 +45,8 @@ public class BlackBox_Dash : MonoBehaviour
             {
                 direction = 4;
             }
-        } else
+        }
+        else
         {
             if (dashTime <= 0)
             {
@@ -53,21 +58,24 @@ public class BlackBox_Dash : MonoBehaviour
             {
                 dashTime -= Time.deltaTime;
 
-                if(direction == 1)
+                if (direction == 1)
                 {
                     rb.velocity = Vector2.left * dashSpeed;
-                } else if (direction == 2)
+                }
+                else if (direction == 2)
                 {
                     rb.velocity = Vector2.right * dashSpeed;
-                } else if (direction == 3)
+                }
+                else if (direction == 3)
                 {
                     rb.velocity = Vector2.up * dashSpeed;
-                } else if (direction == 4)
+                }
+                else if (direction == 4)
                 {
                     rb.velocity = Vector2.down * dashSpeed;
                 }
             }
         }
-
     }
+
 }
