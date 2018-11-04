@@ -8,9 +8,14 @@ public class HERO_script : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
 
+    //HP
+    private int currentHP;
+    private int maxHP=3;
+    private float takeDamageCoolDown=1f;
+    private float nextDamageTime = 0f;
     //MOVE
     public float playerSpeed = 10f;
-    public bool canMove;
+    public static bool canMove;
     //JUMP
     private Vector2 jumpForce = new Vector2(0, 10f);
     public bool isGrounded;
@@ -20,7 +25,6 @@ public class HERO_script : MonoBehaviour
     private float startDashTime=0.1f;
     private int direction;
     private float dashTime;
-    //COOLDOWN
     private float dashCoolDown=1f;
     private float nextDashTime = 0f;
 
@@ -31,6 +35,7 @@ public class HERO_script : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         dashTime = startDashTime;
+        currentHP = maxHP;
     }
 
     private void Update()
@@ -42,6 +47,7 @@ public class HERO_script : MonoBehaviour
         Move();
         Jump();
         Dash();
+        Health(currentHP);
     }
 
     private void FixedUpdate()
@@ -62,6 +68,12 @@ public class HERO_script : MonoBehaviour
         if (cl.gameObject.tag == "ground" && isGrounded == false)
         {
             isGrounded = true;
+        }
+
+        if(cl.gameObject.tag == "Damage" && Time.time > nextDamageTime)
+        {
+            currentHP -= 1;
+            nextDamageTime = Time.time + takeDamageCoolDown;
         }
     }
 
@@ -148,6 +160,14 @@ public class HERO_script : MonoBehaviour
 
                 }
             }
+        }
+    }
+
+    void Health(int currentHP)
+    {
+        if (currentHP==0)
+        {
+            Debug.Log("Hero dies");
         }
     }
 }
