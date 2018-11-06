@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\THINGS\Scripts\attackTrigger.cs" />
     <Compile Include="Assets\THINGS\Scripts\BackgroundScript.cs" />
     <Compile Include="Assets\THINGS\Scripts\BlackBox_Dash.cs" />
     <Compile Include="Assets\THINGS\Scripts\CameraScript.cs" />
