@@ -14,14 +14,20 @@ public class HERO_script : MonoBehaviour
     private float takeDamageCoolDown = 1f;
     private float nextDamageTime = 0f;
     //MOVE
-    private float playerSpeed = 100f;        //change with size
+    private float moveSpeed = 100f;
+    private float maxSpeed = 150f;
     public static bool canMove;
     //JUMP
-    private Vector2 jumpForce = new Vector2(0, 100f);       //change with size
+    private Vector2 jumpForce = new Vector2(0, 150f);
     public bool isGrounded;
     public bool canDoubleJump;
+    public float fallMultiplier = 2.5f;     
+    public float lowJumpMultiplier = 2f;
+
+    public Collider2D groundTrigger;
+
     //DASH
-    private float dashSpeed = 150f;     //change with size
+    private float dashSpeed = 200f;   
     private float startDashTime = 0.1f;
     private int direction;
     private float dashTime;
@@ -34,28 +40,23 @@ public class HERO_script : MonoBehaviour
 
     public Collider2D attackTrigger;
 
-    void Avake()
+    void Awake()
     {
         attackTrigger.enabled = false;
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
         canMove = true;
         isGrounded = true;
-        rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
         dashTime = startDashTime;
         currentHP = maxHP;
     }
 
     private void Update()
     {
-        //float moveHorizontal = Input.GetAxis("Horizontal");
-
-        //float moveVertical = Input.GetAxis("Vertical");
-
-        Move();
         Jump();
         Dash();
         Attack();
@@ -64,24 +65,16 @@ public class HERO_script : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        Move();
     }
 
     void OnCollisionEnter2D(Collision2D cl)
     {
-        if (cl.gameObject.tag == "ground" && isGrounded == false)
-        {
-            isGrounded = true;
-        }
+
     }
 
     void OnCollisionStay2D(Collision2D cl)
-    {
-        if (cl.gameObject.tag == "ground" && isGrounded == false)
-        {
-            isGrounded = true;
-        }
-
+    {   
         if (cl.gameObject.tag == "Damage" && Time.time > nextDamageTime)
         {
             currentHP -= 1;
@@ -91,23 +84,32 @@ public class HERO_script : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D cl)
     {
-        isGrounded = false;
-        canDoubleJump = true;
+
     }
+
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canMove == true)
         {
-            if (isGrounded)
+                if (rb.velocity.y < 0)
+                {
+                    rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                }
+                else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+                {
+                    rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+                }
+            if (Input.GetButtonDown("Jump"))
             {
-                rb.velocity = Vector2.zero;
-                GetComponent<Rigidbody2D>().AddForce(jumpForce, ForceMode2D.Impulse);
-                isGrounded = false;
-            }
-            else
-            {
-                if (canDoubleJump)
+                if (isGrounded)
+                {
+                    rb.velocity = Vector2.zero;
+                    GetComponent<Rigidbody2D>().AddForce(jumpForce, ForceMode2D.Impulse);
+                    isGrounded = false;
+                    Debug.Log("Jumped");
+                }
+                else if (canDoubleJump)
                 {
                     canDoubleJump = false;
                     rb.velocity = Vector2.zero;
@@ -121,17 +123,25 @@ public class HERO_script : MonoBehaviour
     {
         if (canMove == true)
         {
-            if (Input.GetKey(KeyCode.A))
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
+
+            rb.AddForce(Vector2.right * moveSpeed * h);
+            
+            if (rb.velocity.x > maxSpeed)
             {
-                transform.Translate(Vector2.left * playerSpeed * Time.deltaTime, Space.World);
-                sr.flipX = true;
+                rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
             }
 
-            if (Input.GetKey(KeyCode.D))
+            if (rb.velocity.x < -maxSpeed)
             {
-                transform.Translate(Vector2.right * playerSpeed * Time.deltaTime, Space.World);
-                sr.flipX = false;
+                rb.velocity = new Vector2(-maxSpeed, rb.velocity.y);
             }
+
+            if (h > 0)
+                sr.flipX = false;
+            else if (h < 0)
+                sr.flipX = true;
         }
     }    
 
