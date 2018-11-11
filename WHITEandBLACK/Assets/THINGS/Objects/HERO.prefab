@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006887976292770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.017, y: -1.277, z: 0}
+  m_LocalPosition: {x: 0.017, y: -1.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4236803659650600}
@@ -137,7 +137,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000017285347, y: -0.13216153}
+  m_Offset: {x: -0.000017285347, y: -0.116651714}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -148,7 +148,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2748921, y: 2.1779115}
+  m_Size: {x: 1.2748921, y: 2.146892}
   m_EdgeRadius: 0
 --- !u!61 &61756979948855092
 BoxCollider2D:
@@ -234,8 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac4e92f75073d44990edb317b2e7867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0
-  canDoubleJump: 0
+  isGrounded: 1
+  canDoubleJump: 1
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   groundTrigger: {fileID: 61827075623868422}

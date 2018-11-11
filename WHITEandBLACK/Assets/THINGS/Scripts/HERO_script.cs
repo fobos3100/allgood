@@ -18,7 +18,7 @@ public class HERO_script : MonoBehaviour
     private float maxSpeed = 150f;
     public static bool canMove;
     //JUMP
-    private Vector2 jumpForce = new Vector2(0, 150f);
+    private float jumpForce = 150f;
     public bool isGrounded;
     public bool canDoubleJump;
     public float fallMultiplier = 2.5f;     
@@ -70,7 +70,6 @@ public class HERO_script : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D cl)
     {
-
     }
 
     void OnCollisionStay2D(Collision2D cl)
@@ -84,7 +83,6 @@ public class HERO_script : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D cl)
     {
-
     }
 
 
@@ -92,28 +90,27 @@ public class HERO_script : MonoBehaviour
     {
         if (canMove == true)
         {
-                if (rb.velocity.y < 0)
+               /*if (rb.velocity.y < 0)
                 {
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
                 }
                 else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
                 {
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-                }
+                }*/
             if (Input.GetButtonDown("Jump"))
             {
                 if (isGrounded)
                 {
-                    rb.velocity = Vector2.zero;
-                    GetComponent<Rigidbody2D>().AddForce(jumpForce, ForceMode2D.Impulse);
+                    //rb.velocity = Vector2.zero;
+                    rb.velocity = Vector2.up * jumpForce;
                     isGrounded = false;
-                    Debug.Log("Jumped");
                 }
                 else if (canDoubleJump)
                 {
                     canDoubleJump = false;
-                    rb.velocity = Vector2.zero;
-                    GetComponent<Rigidbody2D>().AddForce(jumpForce, ForceMode2D.Impulse);
+                    //rb.velocity = Vector2.zero;
+                    rb.velocity = Vector2.up * jumpForce;
                 }
             }
         }
@@ -151,7 +148,7 @@ public class HERO_script : MonoBehaviour
         {
             if (Time.time > nextDashTime)
             {
-                if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift))
+                if (Input.GetButton("Horizontal") && Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     direction = 1;
                     nextDashTime = Time.time + dashCoolDown;
