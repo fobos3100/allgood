@@ -67,7 +67,6 @@ public class HERO_script : MonoBehaviour
     {
         Move();
     }
-
     void OnCollisionEnter2D(Collision2D cl)
     {
     }
@@ -85,31 +84,30 @@ public class HERO_script : MonoBehaviour
     {
     }
 
-
     private void Jump()
     {
         if (canMove == true)
         {
-               /*if (rb.velocity.y < 0)
+               if (rb.velocity.y < 0)
                 {
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
                 }
                 else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
                 {
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-                }*/
+                }
             if (Input.GetButtonDown("Jump"))
             {
                 if (isGrounded)
                 {
-                    //rb.velocity = Vector2.zero;
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.velocity = Vector2.up * jumpForce;
                     isGrounded = false;
                 }
                 else if (canDoubleJump)
                 {
                     canDoubleJump = false;
-                    //rb.velocity = Vector2.zero;
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.velocity = Vector2.up * jumpForce;
                 }
             }

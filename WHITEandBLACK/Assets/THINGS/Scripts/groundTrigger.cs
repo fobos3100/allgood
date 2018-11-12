@@ -12,17 +12,17 @@ public class groundTrigger : MonoBehaviour
         hero = gameObject.GetComponentInParent<HERO_script>();
     }
 
-    void OnCollisionEnter2D(Collision2D cl)
+    void OnTriggerEnter2D(Collider2D cl)
     {      
-            hero.isGrounded = true;
+        hero.isGrounded = true;
     }
 
-    void OnCollisionStay2D(Collision2D cl)
+    void OnTriggerStay2D(Collider2D cl)
     {     
-            hero.isGrounded = true;
+        hero.isGrounded = true;
     }
 
-    void OnCollisionExit2D(Collision2D cl)
+    void OnTriggerExit2D(Collider2D cl)
     {
         hero.isGrounded = false;
         hero.canDoubleJump = true;
