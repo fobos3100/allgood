@@ -4,59 +4,47 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
+    private Vector2 velocity;
+
     public GameObject player;       //Public variable to store a reference to the player game object
-    private Vector3 offset;         //Private variable to store the offset distance between the player and camera
+
     private float downButtonTime;
-    private float cameraSpeed=10f;
+    private float cameraSpeed=50f;
+    public float smoothTimeX;
+    public float smoothTimeY;
 
     void Start()
     {
-        //Calculate and store the offset value by getting the distance between the player's position and camera's position.
-        offset = transform.position - player.transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-       
     }
-    // LateUpdate is called after Update each frame
+
     private void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
+
+
+        if (Input.GetButtonDown("Vertical"))
         {
             downButtonTime = Time.time;
         }
-        if (Input.GetKey(KeyCode.S) && Time.time - downButtonTime >= 1)
+        if (Input.GetButton("Vertical") && Time.time - downButtonTime >= 1)
         {
-            MoveCameraDown();
-        }
-        else if(Input.GetKey(KeyCode.W) && Time.time - downButtonTime >= 1)
-        {
-            MoveCameraUp();
+            HERO_script.canMove = false;
+            if (Time.time - downButtonTime <= 2)
+            {
+                float v = Input.GetAxis("Vertical");
+                transform.Translate(new Vector3(0, cameraSpeed * Time.deltaTime * v, 0));
+            }
         }
         else
         {
             HERO_script.canMove = true;
-            // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
-            transform.position = player.transform.position + offset;
+            float posX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref velocity.x, smoothTimeX);
+            float posY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref velocity.y, smoothTimeY);
+            transform.position = new Vector3(posX, posY, transform.position.z);
         }
     }    
-
-    void MoveCameraDown()
-    {
-        HERO_script.canMove = false;
-        if (Time.time - downButtonTime <= 3)
-        {
-            transform.Translate(new Vector3(0, -cameraSpeed * Time.deltaTime, 0));
-        }
-    }
-
-    void MoveCameraUp()
-    {
-        HERO_script.canMove = false;
-        if (Time.time - downButtonTime <= 2)
-        {
-            transform.Translate(new Vector3(0, cameraSpeed * Time.deltaTime, 0));
-        }
-    }
 }

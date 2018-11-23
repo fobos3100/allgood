@@ -9,16 +9,21 @@ public class HERO_script : MonoBehaviour
     private SpriteRenderer sr;
 
     //HP
-    private int currentHP;
-    private int maxHP = 3;
-    private float takeDamageCoolDown = 1f;
+    public int curHP;
+    public int maxHP = 10;
+    private float takeDamageCD = 1f;
     private float nextDamageTime = 0f;
+    //MP
+    public int curMP;
+    public int maxMP=16;
+    private float MPregenCD=1f;
+    private float nextMPregenTime=1f;
     //MOVE
-    private float moveSpeed = 100f;
-    private float maxSpeed = 150f;
+    private float moveSpeed = 200f;
+    private float maxSpeed = 210f;
     public static bool canMove;
     //JUMP
-    private float jumpForce = 150f;
+    private float jumpForce = 7000f;
     public bool isGrounded;
     public bool canDoubleJump;
     public float fallMultiplier = 2.5f;     
@@ -31,7 +36,7 @@ public class HERO_script : MonoBehaviour
     private float startDashTime = 0.1f;
     private int direction;
     private float dashTime;
-    private float dashCoolDown = 1f;
+    private float dashCD = 1f;
     private float nextDashTime = 0f;
     //ATTACK
     private bool attacking = false;
@@ -52,7 +57,9 @@ public class HERO_script : MonoBehaviour
         canMove = true;
         isGrounded = true;
         dashTime = startDashTime;
-        currentHP = maxHP;
+        curHP = maxHP;
+        curMP = maxMP;
+        StartCoroutine(addMana());
     }
 
     private void Update()
@@ -60,7 +67,8 @@ public class HERO_script : MonoBehaviour
         Jump();
         Dash();
         Attack();
-        Health(currentHP);
+        Health(curHP);
+        Mana(curMP);
     }
 
     private void FixedUpdate()
@@ -73,11 +81,6 @@ public class HERO_script : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D cl)
     {   
-        if (cl.gameObject.tag == "Damage" && Time.time > nextDamageTime)
-        {
-            currentHP -= 1;
-            nextDamageTime = Time.time + takeDamageCoolDown;
-        }
     }
 
     private void OnCollisionExit2D(Collision2D cl)
@@ -90,25 +93,25 @@ public class HERO_script : MonoBehaviour
         {
                if (rb.velocity.y < 0)
                 {
-                    rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                    rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1)  * Time.deltaTime ;
                 }
                 else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
                 {
-                    rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+                    rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime ;
                 }
+                
             if (Input.GetButtonDown("Jump"))
             {
                 if (isGrounded)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.velocity = Vector2.up * jumpForce;
+                    rb.AddForce(Vector2.up * jumpForce);
                     isGrounded = false;
                 }
                 else if (canDoubleJump)
                 {
                     canDoubleJump = false;
                     rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.velocity = Vector2.up * jumpForce;
+                    rb.AddForce(Vector2.up * jumpForce);
                 }
             }
         }
@@ -146,15 +149,15 @@ public class HERO_script : MonoBehaviour
         {
             if (Time.time > nextDashTime)
             {
-                if (Input.GetButton("Horizontal") && Input.GetKeyDown(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     direction = 1;
-                    nextDashTime = Time.time + dashCoolDown;
+                    nextDashTime = Time.time + dashCD;
                 }
                 else if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     direction = 2;
-                    nextDashTime = Time.time + dashCoolDown;
+                    nextDashTime = Time.time + dashCD;
                 }
             }
         }
@@ -184,17 +187,47 @@ public class HERO_script : MonoBehaviour
         }
     }
 
-    void Health(int currentHP)
+    void Health(int curHP)
     {
-        if (currentHP == 0)
+        if (curHP > maxHP)
+        {
+            curHP = maxHP;
+        }
+
+        if (curHP <= 0)
         {
             Debug.Log("Hero dies");
+            Application.LoadLevel(Application.loadedLevel); //restart
+        }
+    }
+
+    void Mana(int curMP)
+    {
+        if (curMP > maxMP)
+        {
+            curMP = maxMP;
+        }
+    }
+
+    IEnumerator addMana()
+    {
+        while (true)
+        { // loops forever...
+            if (curMP < maxMP)
+            { // if health < 100...
+                curMP += 1; // increase MP and wait the specified time
+                yield return new WaitForSeconds(1);
+            }
+            else
+            { // if curMP >= maxMP, just yield 
+                yield return null;
+            }
         }
     }
 
     void Attack()
     {
-        if(Input.GetKeyDown(KeyCode.Z)&&!attacking)
+        if(Input.GetButtonDown("Fire1")&&!attacking)
         {
             attacking = true;
             attackTimer = attackCd;
@@ -214,5 +247,26 @@ public class HERO_script : MonoBehaviour
                 attackTrigger.enabled = false;
             }
         }
+    }
+
+    public void Damage(int dmg)
+    {
+        curHP -= dmg;
+    }
+
+    public IEnumerator Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir)
+    {
+        float timer = 0;
+
+        while (knockDur > timer)
+        {
+            timer += Time.deltaTime;
+
+            rb.velocity = Vector2.zero;
+            rb.AddForce(new Vector3(knockbackDir.x * 0, knockbackDir.y * knockbackPwr, transform.position.z));
+
+        }
+
+        yield return 0;
     }
 }
