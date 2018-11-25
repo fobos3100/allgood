@@ -28,6 +28,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1242725984404050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4810347262924112}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1262937655901814
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +72,8 @@ GameObject:
   - component: {fileID: 61555766419723534}
   - component: {fileID: 50535591369489368}
   - component: {fileID: 114925606200737742}
+  - component: {fileID: 111319803756881542}
+  - component: {fileID: 114976784265320160}
   m_Layer: 0
   m_Name: HERO
   m_TagString: Player
@@ -71,11 +88,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276822025263204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1846.4, y: 282, z: 0}
+  m_LocalPosition: {x: 1845.1, y: 224.2, z: 0}
   m_LocalScale: {x: 16.5144, y: 16.5144, z: 16.5144}
   m_Children:
   - {fileID: 4828950850264390}
   - {fileID: 4247115265493064}
+  - {fileID: 4810347262924112}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91,6 +109,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4236803659650600}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4810347262924112
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242725984404050}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9991279, y: 0.048441827, z: 4.993755}
+  m_LocalScale: {x: 0.060553208, y: 0.060553208, z: 0.060553208}
+  m_Children: []
+  m_Father: {fileID: 4236803659650600}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4828950850264390
 Transform:
@@ -200,6 +231,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4660463, y: 2.242837}
   m_EdgeRadius: 0
+--- !u!111 &111319803756881542
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276822025263204}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 0}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114087197419495936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f96505ad89349449e27a5c33001a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 20
+  meleeDmg: 20
 --- !u!114 &114713144401554562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,12 +280,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac4e92f75073d44990edb317b2e7867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curHP: 0
+  maxHP: 10
+  curMP: 0
+  maxMP: 16
+  moveSpeed: 200
+  maxSpeed: 210
+  jumpForce: 7000
   isGrounded: 1
   canDoubleJump: 1
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   groundTrigger: {fileID: 61135658727510716}
+  dashSpeed: 700
+  dashAirTime: 0.1
+  dashCD: 3
+--- !u!114 &114976784265320160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276822025263204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64542c262ca467a4a873fb95fb5c9bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 4810347262924112}
+  bulletPrefab: {fileID: 1594328267665010, guid: aa642c1ce57b88c4c8d3e1decb50a43d,
+    type: 2}
+  shootCD: 0.25
+  attackCd: 0.3
   attackTrigger: {fileID: 61756979948855092}
+  rayDamage: 3
 --- !u!212 &212572317606874334
 SpriteRenderer:
   m_ObjectHideFlags: 1

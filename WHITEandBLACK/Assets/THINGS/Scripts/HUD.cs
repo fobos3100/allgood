@@ -11,11 +11,11 @@ public class HUD : MonoBehaviour {
     public Image HPUI;
     public Image MPUI;
 
-    private HERO_script hero;
+    private Player hero;
 
     private void Start()
     {
-        hero = GameObject.FindGameObjectWithTag("Player").GetComponent<HERO_script>();
+        hero = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     private void Update()

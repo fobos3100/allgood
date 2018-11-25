@@ -24,14 +24,14 @@ public class PauseMenu : MonoBehaviour {
         {
             PauseUI.SetActive(true);
             Time.timeScale = 0;
-            HERO_script.canMove = false;
+            Player.canMove = false;
         }
 
         if (!paused)
         {
             PauseUI.SetActive(false);
             Time.timeScale = 1;
-            HERO_script.canMove = true;
+            Player.canMove = true;
         }
     }
 

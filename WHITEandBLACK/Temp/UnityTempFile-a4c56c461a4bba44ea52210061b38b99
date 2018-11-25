@@ -188,11 +188,13 @@
 -define:UNITY_POST_PROCESSING_STACK_V2
 Assets/THINGS/Scripts/attackTrigger.cs
 Assets/THINGS/Scripts/BackgroundScript.cs
+Assets/THINGS/Scripts/Bullet.cs
 Assets/THINGS/Scripts/CameraScript.cs
+Assets/THINGS/Scripts/Enemy.cs
 Assets/THINGS/Scripts/groundTrigger.cs
-Assets/THINGS/Scripts/HERO_script.cs
 Assets/THINGS/Scripts/HUD.cs
 Assets/THINGS/Scripts/PauseMenu.cs
+Assets/THINGS/Scripts/Player.cs
 Assets/THINGS/Scripts/Spikes.cs
 Assets/THINGS/Scripts/TestScript/BlackBox_Dash.cs
 Assets/THINGS/Scripts/TestScript/BlackBoxJump.cs
@@ -202,4 +204,5 @@ Assets/THINGS/Scripts/TestScript/BoxGroundTrigger.cs
 Assets/THINGS/Scripts/TestScript/Dash.cs
 Assets/THINGS/Scripts/TestScript/Jump.cs
 Assets/THINGS/Scripts/TestScript/Move.cs
+Assets/THINGS/Scripts/Weapon.cs
 -lib:C:\SOS\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity

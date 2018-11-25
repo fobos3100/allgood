@@ -63,11 +63,13 @@
   <ItemGroup>
     <Compile Include="Assets\THINGS\Scripts\attackTrigger.cs" />
     <Compile Include="Assets\THINGS\Scripts\BackgroundScript.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Bullet.cs" />
     <Compile Include="Assets\THINGS\Scripts\CameraScript.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Enemy.cs" />
     <Compile Include="Assets\THINGS\Scripts\groundTrigger.cs" />
-    <Compile Include="Assets\THINGS\Scripts\HERO_script.cs" />
     <Compile Include="Assets\THINGS\Scripts\HUD.cs" />
     <Compile Include="Assets\THINGS\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Player.cs" />
     <Compile Include="Assets\THINGS\Scripts\Spikes.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\BlackBox_Dash.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\BlackBoxJump.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Assets\THINGS\Scripts\TestScript\Dash.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\Jump.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\Move.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Weapon.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/SOS/allgood/WHITEandBLACK/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

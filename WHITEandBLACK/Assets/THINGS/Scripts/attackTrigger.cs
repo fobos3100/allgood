@@ -5,14 +5,24 @@ using UnityEngine;
 public class attackTrigger : MonoBehaviour
 {
 
-    public int dmg = 20;
+    public int meleeDmg = 20;
 
-    void OnTriggerEnter2D(Collider2D col)
+    /*void OnTriggerEnter2D(Collider2D col)
     {
 
         if (col.isTrigger != true && col.CompareTag("Enemy"))
         {
             col.SendMessageUpwards("Damage", dmg);
+        }
+    }
+    */
+
+    private void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        Enemy enemy = hitInfo.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(meleeDmg);
         }
     }
 }

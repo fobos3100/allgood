@@ -5,11 +5,11 @@ using UnityEngine;
 public class groundTrigger : MonoBehaviour
 {
 
-    private HERO_script hero;
+    private Player hero;
 
     private void Start()
     {
-        hero = gameObject.GetComponentInParent<HERO_script>();
+        hero = gameObject.GetComponentInParent<Player>();
     }
 
     void OnTriggerEnter2D(Collider2D cl)

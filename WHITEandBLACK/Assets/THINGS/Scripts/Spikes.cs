@@ -5,14 +5,14 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
 
-    private HERO_script Hero;
+    private Player Hero;
 
     //public int dmg=1;
 
     void Start()
     {
 
-        Hero = GameObject.FindGameObjectWithTag("Player").GetComponent<HERO_script>();
+        Hero = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
     }
 
