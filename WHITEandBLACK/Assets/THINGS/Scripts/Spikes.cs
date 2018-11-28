@@ -5,14 +5,14 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
 
-    private Player Hero;
+    private Player player;
 
     //public int dmg=1;
 
     void Start()
     {
 
-        Hero = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
     }
 
@@ -20,8 +20,8 @@ public class Spikes : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            Hero.Damage(1);
-            StartCoroutine(Hero.Knockback(0.02f, 10, Hero.transform.position));
+            player.Damage(1);
+            StartCoroutine(player.Knockback(0.02f, 10, player.transform.position));
         }
 
     }

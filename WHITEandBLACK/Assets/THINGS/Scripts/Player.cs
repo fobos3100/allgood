@@ -11,12 +11,12 @@ public class Player : MonoBehaviour
     private bool facingRight;
 
     //HP
-    public int curHP;
+    public int curHP=0;
     public int maxHP = 10;
     private float takeDmgCD = 1f;
     private float nextDmgTime = 0f;
     //MP
-    public int curMP;
+    public int curMP=0;
     public int maxMP = 16;
     private float MPregenCD = 1f;
     private float nextMPregenTime = 1f;
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         isGrounded = true;
         curHP = maxHP;
         curMP = maxMP;
-        StartCoroutine(addMana());
+        StartCoroutine(addMP());
     }
 
     private void Update()
@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator addMana()
+    IEnumerator addMP()
     {
         while (true)
         { // loops forever...
@@ -197,6 +197,11 @@ public class Player : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    public void removeMP(int MP)
+    {
+        curMP -= MP;
     }
 
     public void Damage(int dmg)
