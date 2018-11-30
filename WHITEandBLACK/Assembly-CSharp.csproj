@@ -61,16 +61,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\THINGS\Scripts\attackTrigger.cs" />
     <Compile Include="Assets\THINGS\Scripts\BackgroundScript.cs" />
     <Compile Include="Assets\THINGS\Scripts\Bullet.cs" />
     <Compile Include="Assets\THINGS\Scripts\CameraScript.cs" />
     <Compile Include="Assets\THINGS\Scripts\Enemy.cs" />
     <Compile Include="Assets\THINGS\Scripts\groundTrigger.cs" />
     <Compile Include="Assets\THINGS\Scripts\HUD.cs" />
+    <Compile Include="Assets\THINGS\Scripts\LadderTrigger.cs" />
+    <Compile Include="Assets\THINGS\Scripts\MeleeAtk.cs" />
     <Compile Include="Assets\THINGS\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\THINGS\Scripts\Player.cs" />
     <Compile Include="Assets\THINGS\Scripts\Spikes.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Staff.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\BlackBox_Dash.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\BlackBoxJump.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\Box.cs" />

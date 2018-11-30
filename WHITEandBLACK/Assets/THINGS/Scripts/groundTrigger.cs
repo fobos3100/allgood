@@ -5,26 +5,31 @@ using UnityEngine;
 public class groundTrigger : MonoBehaviour
 {
 
-    private Player hero;
+    private Player player;
 
     private void Start()
     {
-        hero = gameObject.GetComponentInParent<Player>();
+        player = gameObject.GetComponentInParent<Player>();
     }
 
-    void OnTriggerEnter2D(Collider2D cl)
-    {      
-        hero.isGrounded = true;
-    }
-
-    void OnTriggerStay2D(Collider2D cl)
-    {     
-        hero.isGrounded = true;
-    }
-
-    void OnTriggerExit2D(Collider2D cl)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        hero.isGrounded = false;
-        hero.canDoubleJump = true;
+        if (col.CompareTag("Ground"))
+            player.isGrounded = true;
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.CompareTag("Ground"))
+            player.isGrounded = true;
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Ground"))
+        {
+            player.isGrounded = false;
+            player.canDoubleJump = true;
+        }
     }
 }      

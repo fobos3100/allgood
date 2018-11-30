@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     private float dashTime=0;
     public float dashCD = 3f;
     private float dashDirection=0;
+    //Climb
+    public float climbSpeed=200;
     //Test
     //public CharacterController2D controller;
 
@@ -73,15 +75,15 @@ public class Player : MonoBehaviour
         Dash();
         Flip(h);
     }
-    void OnCollisionEnter2D(Collision2D cl)
+    void OnCollisionEnter2D(Collision2D col)
     {
     }
 
-    void OnCollisionStay2D(Collision2D cl)
-    {
+    void OnCollisionStay2D(Collision2D col)
+    {       
     }
 
-    private void OnCollisionExit2D(Collision2D cl)
+    private void OnCollisionExit2D(Collision2D col)
     {
     }
 

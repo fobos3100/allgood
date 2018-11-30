@@ -8,8 +8,8 @@ public class Bullet : MonoBehaviour {
     public float speed = 375f;
     public int damage = 1;
     public Rigidbody2D rb;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         if (Input.GetAxis("Vertical") == 0)
         {
             rb.velocity = transform.right * speed;
@@ -31,6 +31,9 @@ public class Bullet : MonoBehaviour {
         {
             enemy.TakeDamage(damage);
         }
-        Destroy(gameObject);
+        if (hitInfo.CompareTag("Ground") || hitInfo.CompareTag("Player") || hitInfo.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

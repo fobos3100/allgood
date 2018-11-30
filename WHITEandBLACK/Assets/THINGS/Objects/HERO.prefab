@@ -11,23 +11,6 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1276822025263204}
   m_IsPrefabAsset: 1
---- !u!1 &1136584608792582
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4828950850264390}
-  - component: {fileID: 61756979948855092}
-  - component: {fileID: 114087197419495936}
-  m_Layer: 0
-  m_Name: AttackTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1182898236769630
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +69,7 @@ GameObject:
   - component: {fileID: 4236803659650600}
   - component: {fileID: 212572317606874334}
   - component: {fileID: 61555766419723534}
+  - component: {fileID: 58276263146616808}
   - component: {fileID: 50535591369489368}
   - component: {fileID: 114925606200737742}
   - component: {fileID: 111319803756881542}
@@ -93,6 +77,21 @@ GameObject:
   m_Layer: 0
   m_Name: HERO
   m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1408782783767942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4635836062549614}
+  m_Layer: 0
+  m_Name: MeleeFirePoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,15 +133,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276822025263204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1845.57, y: 224.2, z: 0}
+  m_LocalPosition: {x: 1203, y: 1183, z: 0}
   m_LocalScale: {x: 16.5144, y: 16.5144, z: 16.5144}
   m_Children:
-  - {fileID: 4828950850264390}
   - {fileID: 4247115265493064}
   - {fileID: 4689430359327832}
   - {fileID: 4363480089501288}
   - {fileID: 4851486528676990}
   - {fileID: 4810347262924112}
+  - {fileID: 4635836062549614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,7 +156,7 @@ Transform:
   m_LocalScale: {x: 0.060553208, y: 0.060553208, z: 0.060553208}
   m_Children: []
   m_Father: {fileID: 4236803659650600}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4363480089501288
 Transform:
@@ -170,7 +169,20 @@ Transform:
   m_LocalScale: {x: 16.92342, y: 16.92342, z: 16.92342}
   m_Children: []
   m_Father: {fileID: 4236803659650600}
-  m_RootOrder: 3
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4635836062549614
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1408782783767942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4236803659650600}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4689430359327832
 Transform:
@@ -179,11 +191,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1581570668020854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.83, y: 0, z: 4.993755}
+  m_LocalPosition: {x: 0.88, y: 0, z: 4.993755}
   m_LocalScale: {x: 0.060553208, y: 0.060553208, z: 0.060553208}
   m_Children: []
   m_Father: {fileID: 4236803659650600}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4810347262924112
 Transform:
@@ -196,20 +208,7 @@ Transform:
   m_LocalScale: {x: 0.060553208, y: 0.060553208, z: 0.060553208}
   m_Children: []
   m_Father: {fileID: 4236803659650600}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4828950850264390
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1136584608792582}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2699995, y: -0.32999992, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4236803659650600}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4851486528676990
 Transform:
@@ -218,11 +217,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1465482784949202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.11, z: 4.9937544}
+  m_LocalPosition: {x: 0, y: 1.21, z: 4.9937544}
   m_LocalScale: {x: 0.060553208, y: 0.060553208, z: 0.060553208}
   m_Children: []
   m_Father: {fileID: 4236803659650600}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50535591369489368
 Rigidbody2D:
@@ -244,6 +243,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!58 &58276263146616808
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276822025263204}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.016516864, y: -0.5730897}
+  serializedVersion: 2
+  m_Radius: 0.63754207
 --- !u!61 &61135658727510716
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -281,7 +295,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000017285347, y: -0.116651714}
+  m_Offset: {x: -0.000017285347, y: 0.19056645}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -292,32 +306,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2748921, y: 2.146892}
-  m_EdgeRadius: 0
---- !u!61 &61756979948855092
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1136584608792582}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.23302317, y: 0.18126345}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4660463, y: 2.242837}
+  m_Size: {x: 1.2748921, y: 1.5324559}
   m_EdgeRadius: 0
 --- !u!111 &111319803756881542
 Animation:
@@ -334,18 +323,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114087197419495936
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1136584608792582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f96505ad89349449e27a5c33001a49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meleeDmg: 20
 --- !u!114 &114713144401554562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,8 +349,8 @@ MonoBehaviour:
   maxHP: 10
   curMP: 0
   maxMP: 16
-  moveSpeed: 200
-  maxSpeed: 210
+  moveSpeed: 150
+  maxSpeed: 170
   jumpForce: 7000
   isGrounded: 1
   canDoubleJump: 1
@@ -383,6 +360,7 @@ MonoBehaviour:
   dashSpeed: 700
   dashAirTime: 0.1
   dashCD: 3
+  climbSpeed: 200
 --- !u!114 &114976784265320160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -399,11 +377,19 @@ MonoBehaviour:
   firePointLower: {fileID: 4810347262924112}
   bulletPrefab: {fileID: 1594328267665010, guid: aa642c1ce57b88c4c8d3e1decb50a43d,
     type: 2}
+  meleePrefab: {fileID: 1613799230048464, guid: 34c180e9e6b1780488019acdc955d1bc,
+    type: 2}
   shootCD: 0.25
   attackCd: 0.3
-  attackTrigger: {fileID: 61756979948855092}
+  meleeFirePoint: {fileID: 4635836062549614}
   rayDamage: 3
   lineRenderer: {fileID: 120500323928546576}
+  weaponNumber: 0
+  weaponText: {fileID: 0}
+  weapon0: none
+  weapon1: Melee
+  weapon2: Missle
+  weapon3: Ray
 --- !u!120 &120500323928546576
 LineRenderer:
   m_ObjectHideFlags: 1
