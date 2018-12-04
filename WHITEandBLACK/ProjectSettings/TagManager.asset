@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Ground
   - Ladder
+  - Staff
   layers:
   - Default
   - TransparentFX

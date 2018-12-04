@@ -64,11 +64,14 @@
     <Compile Include="Assets\THINGS\Scripts\BackgroundScript.cs" />
     <Compile Include="Assets\THINGS\Scripts\Bullet.cs" />
     <Compile Include="Assets\THINGS\Scripts\CameraScript.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Door.cs" />
     <Compile Include="Assets\THINGS\Scripts\Enemy.cs" />
+    <Compile Include="Assets\THINGS\Scripts\FallingPlatform.cs" />
     <Compile Include="Assets\THINGS\Scripts\groundTrigger.cs" />
     <Compile Include="Assets\THINGS\Scripts\HUD.cs" />
     <Compile Include="Assets\THINGS\Scripts\LadderTrigger.cs" />
     <Compile Include="Assets\THINGS\Scripts\MeleeAtk.cs" />
+    <Compile Include="Assets\THINGS\Scripts\MovingPlatform.cs" />
     <Compile Include="Assets\THINGS\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\THINGS\Scripts\Player.cs" />
     <Compile Include="Assets\THINGS\Scripts\Spikes.cs" />
@@ -82,6 +85,7 @@
     <Compile Include="Assets\THINGS\Scripts\TestScript\Jump.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\Move.cs" />
     <Compile Include="Assets\THINGS\Scripts\Weapon.cs" />
+    <Compile Include="Assets\THINGS\Scripts\WeaponPoint.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/SOS/allgood/WHITEandBLACK/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
