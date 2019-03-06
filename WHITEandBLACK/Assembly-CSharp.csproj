@@ -61,18 +61,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\THINGS\Scripts\BackgroundScript.cs" />
     <Compile Include="Assets\THINGS\Scripts\Bullet.cs" />
-    <Compile Include="Assets\THINGS\Scripts\CameraScript.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Camera and Hud\BackgroundScript.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Camera and Hud\CameraScript.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Camera and Hud\CameraShake.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Camera and Hud\HUD.cs" />
+    <Compile Include="Assets\THINGS\Scripts\Camera and Hud\PauseMenu.cs" />
     <Compile Include="Assets\THINGS\Scripts\Door.cs" />
     <Compile Include="Assets\THINGS\Scripts\Enemy.cs" />
     <Compile Include="Assets\THINGS\Scripts\FallingPlatform.cs" />
     <Compile Include="Assets\THINGS\Scripts\groundTrigger.cs" />
-    <Compile Include="Assets\THINGS\Scripts\HUD.cs" />
     <Compile Include="Assets\THINGS\Scripts\LadderTrigger.cs" />
     <Compile Include="Assets\THINGS\Scripts\MeleeAtk.cs" />
     <Compile Include="Assets\THINGS\Scripts\MovingPlatform.cs" />
-    <Compile Include="Assets\THINGS\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\THINGS\Scripts\Player.cs" />
     <Compile Include="Assets\THINGS\Scripts\Spikes.cs" />
     <Compile Include="Assets\THINGS\Scripts\Staff.cs" />
@@ -81,9 +82,11 @@
     <Compile Include="Assets\THINGS\Scripts\TestScript\Box.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\BoxCoolJump.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\BoxGroundTrigger.cs" />
+    <Compile Include="Assets\THINGS\Scripts\TestScript\Controller2DTest.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\Dash.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\Jump.cs" />
     <Compile Include="Assets\THINGS\Scripts\TestScript\Move.cs" />
+    <Compile Include="Assets\THINGS\Scripts\TestScript\PlayerTest.cs" />
     <Compile Include="Assets\THINGS\Scripts\Weapon.cs" />
     <Compile Include="Assets\THINGS\Scripts\WeaponPoint.cs" />
     <Reference Include="UnityEditor.StandardEvents">

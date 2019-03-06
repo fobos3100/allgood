@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     //other
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private BoxCollider2D boxCollider;
 
     private bool facingRight;
 
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour
     private float MPregenCD = 1f;
     private float nextMPregenTime = 1f;
     //MOVE
-    public float moveSpeed = 200f;
+    public float moveSpeed = 50f;
     public float maxSpeed = 210f;
     public static bool canMove;
     //JUMP
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     void Start()
@@ -141,7 +143,7 @@ public class Player : MonoBehaviour
             if (rb.velocity.x < -maxSpeed)
             {
                 rb.velocity = new Vector2(-maxSpeed, rb.velocity.y);
-            }                 
+            }
         }
     }
 
