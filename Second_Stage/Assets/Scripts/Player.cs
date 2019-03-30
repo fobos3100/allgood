@@ -56,11 +56,11 @@ public class Player : MonoBehaviour {
     {
         if (_velocity.y < 0)
         {
-            _velocity.y += _gravity * (fallMultiplier - 1) * Time.deltaTime;
+            _velocity += Vector3.up * _gravity * (fallMultiplier - 1) * Time.deltaTime;
         }
         else if (_velocity.y > 0 && !Input.GetButton("Jump"))
         {
-            _velocity.y += _gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+            _velocity += Vector3.up * _gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 }

@@ -61,13 +61,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Camera and Hud\BackgroundScript.cs" />
-    <Compile Include="Assets\Scripts\Camera and Hud\CameraScript.cs" />
-    <Compile Include="Assets\Scripts\Camera and Hud\CameraShake.cs" />
-    <Compile Include="Assets\Scripts\Camera and Hud\HUD.cs" />
-    <Compile Include="Assets\Scripts\Camera and Hud\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Camera_and_Hud\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Controller2D.cs" />
-    <Compile Include="Assets\Scripts\Old_Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\DialogueSystem.cs" />
+    <Compile Include="Assets\Scripts\Fight_System\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Fight_System\FightSystem.cs" />
+    <Compile Include="Assets\Scripts\Fight_System\WeaponPoint.cs" />
+    <Compile Include="Assets\Scripts\NPC.cs" />
+    <Compile Include="Assets\Scripts\Obstacles\PlatformController.cs" />
+    <Compile Include="Assets\Scripts\Old_Camera_and_Hud\BackgroundScript.cs" />
+    <Compile Include="Assets\Scripts\Old_Camera_and_Hud\CameraScript.cs" />
+    <Compile Include="Assets\Scripts\Old_Camera_and_Hud\CameraShake.cs" />
+    <Compile Include="Assets\Scripts\Old_Camera_and_Hud\HUD.cs" />
+    <Compile Include="Assets\Scripts\Old_Camera_and_Hud\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Old_Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Old_Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Old_Scripts\FallingPlatform.cs" />
@@ -79,9 +85,8 @@
     <Compile Include="Assets\Scripts\Old_Scripts\Spikes.cs" />
     <Compile Include="Assets\Scripts\Old_Scripts\Staff.cs" />
     <Compile Include="Assets\Scripts\Old_Scripts\Weapon.cs" />
-    <Compile Include="Assets\Scripts\Old_Scripts\WeaponPoint.cs" />
-    <Compile Include="Assets\Scripts\PlatformController.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\RaycastController.cs" />
     <Compile Include="Assets\Scripts\TestScript\BlackBox_Dash.cs" />
     <Compile Include="Assets\Scripts\TestScript\BlackBoxJump.cs" />

@@ -217,7 +217,7 @@ public class Player_Old : MonoBehaviour
         }
     }
 
-    public IEnumerator Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir)
+    public IEnumerator Knockback(float knockDur, float knockbackPwr, Vector2 knockbackDir)
     {
         float timer = 0;
 

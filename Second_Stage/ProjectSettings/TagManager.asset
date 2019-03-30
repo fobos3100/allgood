@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Through
+  - Staff
+  - Ground
+  - Damage
+  - Enemy
   layers:
   - Default
   - TransparentFX

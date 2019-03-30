@@ -121,7 +121,7 @@ public class Weapon : MonoBehaviour {
                         enemy.TakeDamage(rayDamage);
                     }
 
-                    //StartCoroutine(player.Knockback(0.02f, 3, new Vector3(1,0,0)));
+                    //StartCoroutine(player.Knockback(0.02f, 3, new Vector2(1,0,0)));
 
                     //Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
                     if (Input.GetAxis("Vertical") > 0)

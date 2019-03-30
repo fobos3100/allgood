@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour {
             Destroy(gameObject);
         }
 
-    public IEnumerator Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir)
+    public IEnumerator Knockback(float knockDur, float knockbackPwr, Vector2 knockbackDir)
     {
         float timer = 0;
 
